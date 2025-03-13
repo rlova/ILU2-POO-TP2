@@ -48,8 +48,8 @@ public class BoundaryEmmenager {
 		int effetPotionMin = Clavier.entrerEntier(question.toString());
 		question.append("Quelle est la force de potion la plus forte que vous produisez ?");
 		int effetPotionMax = Clavier.entrerEntier(question.toString());
-//		if (effetPotionMax < effetPotionMin) {
-//			System.out.println("Attention Druide, vous vous etres trompé dans le minimum et le maximum");
-//		}
+		do {
+			System.out.println("Attention Druide, vous vous etres trompé dans le minimum et le maximum");
+		} while (effetPotionMax < effetPotionMin);
 	}
 }
