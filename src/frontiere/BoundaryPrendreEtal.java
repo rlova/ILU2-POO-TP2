@@ -14,7 +14,7 @@ public class BoundaryPrendreEtal {
 		if (!nomVendeurConnu) {
 			System.out.println("Je suis désolé "+nomVendeur+" mais il faut etre un habitant de notre village pour commencer ici.");
 		} else {
-			System.out.println("Bonjour "+nomVendeur+" , je vaus regarder su je peux vous trouver un étal.");
+			System.out.println("Bonjour "+nomVendeur+" , je vaus regarder si je peux vous trouver un étal.");
 			boolean etalDisponible = controlPrendreEtal.resteEtals();
 			if (!etalDisponible) {
 				System.out.println("Désolé "+nomVendeur+" je n'ai plus d'étal qui ne soit pas déjà occupé.");
