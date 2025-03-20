@@ -73,7 +73,7 @@ public class TestControleursDesCas {
 		ControlPrendreEtal controlPrendreEtal = new ControlPrendreEtal(
 				controlVerifierIdentite, village);
 		int numeroEtal = controlPrendreEtal.prendreEtal("Obelix", "fleur", 5);
-		System.out.println("Obelix a pris l'etal n�" + numeroEtal);
+		System.out.println("Obelix a pris l'etal n�" + (numeroEtal+1));
 
 //		Sortie Console :
 //		Cas 4 : Prendre etal
@@ -82,26 +82,26 @@ public class TestControleursDesCas {
 
 		// Cas 5 : trouverEtalVendeur
 
-//		System.out.println("///////////////////////////////");
-//		System.out.println("Cas 5 : trouver etal vendeur");
-//		ControlTrouverEtalVendeur controlTrouverEtalVendeur = new ControlTrouverEtalVendeur(
-//				village);
-//		Etal etalObelix = controlTrouverEtalVendeur
-//				.trouverEtalVendeur("Obelix");
-//		Etal etalIntrus = controlTrouverEtalVendeur
-//				.trouverEtalVendeur("Intrus");
-//		System.out.print("L'étal d'Obélix");
-//		if (etalObelix != null) {
-//			System.out.println(" est trouvé");
-//		} else {
-//			System.out.println(" n'est pas trouvé");
-//		}
-//		System.out.print("L'étal de Intrus");
-//		if (etalIntrus != null) {
-//			System.out.println(" est trouvé");
-//		} else {
-//			System.out.println(" n'est pas trouvé");
-//		}
+		System.out.println("///////////////////////////////");
+		System.out.println("Cas 5 : trouver etal vendeur");
+		ControlTrouverEtalVendeur controlTrouverEtalVendeur = new ControlTrouverEtalVendeur(
+				village);
+		Etal etalObelix = controlTrouverEtalVendeur
+				.trouverEtalVendeur("Obelix");
+		Etal etalIntrus = controlTrouverEtalVendeur
+				.trouverEtalVendeur("Intrus");
+		System.out.print("L'etal d'Obelix");
+		if (etalObelix != null) {
+			System.out.println(" est trouve");
+		} else {
+			System.out.println(" n'est pas trouve");
+		}
+		System.out.print("L'etal de Intrus");
+		if (etalIntrus != null) {
+			System.out.println(" est trouve");
+		} else {
+			System.out.println(" n'est pas trouve");
+		}
 		
 
 //		Sortie Console :
