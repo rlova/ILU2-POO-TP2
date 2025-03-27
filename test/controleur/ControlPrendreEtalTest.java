@@ -39,7 +39,7 @@ class ControlPrendreEtalTest {
 
 	@Test
 	void testVerifierIdentite() {
-		fail("Not yet implemented");
+		assertTrue(controlPrendreEtal.verifierIdentite(chef.getNom()));
 	}
 
 }
