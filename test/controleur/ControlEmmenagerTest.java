@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import personnages.Chef;
-import villagegaulois.Village;
+import villagegaulois.Village; 
 
 class ControlEmmenagerTest {
 	private Village village;
