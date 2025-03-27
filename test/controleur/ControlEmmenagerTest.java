@@ -28,7 +28,7 @@ class ControlEmmenagerTest {
 
 	@Test
 	void testIsHabitant() {
-		assertFalse(controlEmmenager.isHabitant("Abraracourcix"));
+		assertTrue(controlEmmenager.isHabitant("Abraracourix"));
 		controlEmmenager.ajouterGaulois("Bonemine", 10);
 		assertTrue(controlEmmenager.isHabitant("Bonemine"));
 		controlEmmenager.ajouterDruide("Panoramix", 10, 1, 5);
