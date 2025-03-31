@@ -26,22 +26,23 @@ public class ControlLibererEtal {
 	 * 		[4] : quantité de produit vendu
 	 */
 	public String[] libererEtal(String nomVendeur) {
-		if (!isVendeur(nomVendeur)) {
-			return null;
-		}
-		Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
 		String[] donneesEtal = null;
-		donneesEtal = etal.etatEtal();
-//		donneesEtal[0] = etal.isEtalOccupe();
-//		donneesEtal[1] = nomVendeur;
-//		donneesEtal[2] = etal.getProduit();
-//		donneesEtal[3] = etal.getQuantite();
-//		donneesEtal[4] = etal.get;
-		if (donneesEtal[0]!="true") {
-			System.out.println("Vous avez vendu "+ donneesEtal[4] + " sur "+donneesEtal[3]+" "+donneesEtal[2]+".");
-			System.out.println("Au revoir "+nomVendeur+", passez une bonne journee");
+		if (!isVendeur(nomVendeur)) {
+			return donneesEtal;
+		} else {
+			Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
+			donneesEtal = etal.etatEtal();
+//			donneesEtal[0] = etal.isEtalOccupe();
+//			donneesEtal[1] = nomVendeur;
+//			donneesEtal[2] = etal.getProduit();
+//			donneesEtal[3] = etal.getQuantite();
+//			donneesEtal[4] = etal.get;
+			if (donneesEtal[0]!="true") {
+				System.out.println("Vous avez vendu "+ donneesEtal[4] + " sur "+donneesEtal[3]+" "+donneesEtal[2]+".");
+				System.out.println("Au revoir "+nomVendeur+", passez une bonne journee");
+			}
+			etal.libererEtal();
 		}
-		etal.libererEtal();
 		return donneesEtal;
 	}
 
