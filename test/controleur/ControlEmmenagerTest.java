@@ -52,7 +52,7 @@ class ControlEmmenagerTest {
 			if (i<10) {
 				assertTrue(controlEmmenager.isHabitant("GAULOIS_"+i));
 			} else {
-				assertFalse(controlEmmenager.isHabitant("GAULIS_"+i));
+				assertFalse(controlEmmenager.isHabitant("GAULOIS_"+i));
 			}
 		}
 	}

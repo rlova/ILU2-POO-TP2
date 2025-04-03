@@ -7,7 +7,7 @@ import villagegaulois.Village;
 public class ControlEmmenager {
 	private Village village;
 
-	public ControlEmmenager(Village village) {
+	public ControlEmmenager(Village village) { 
 		this.village = village;
 	}
 

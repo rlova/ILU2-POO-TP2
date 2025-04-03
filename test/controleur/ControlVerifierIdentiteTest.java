@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import personnages.Chef;
+import personnages.Druide;
 import personnages.Gaulois;
 import villagegaulois.Village;
 
@@ -22,6 +23,9 @@ class ControlVerifierIdentiteTest {
 		chef = new Chef("le chef", 5, village);
 		village.setChef(chef);
 		gaulois = new Gaulois("le Gaulois", 5);
+		village.getNom();
+		village.trouverHabitant(gaulois.getNom());
+		village.donnerVillageois();
 	}
 	
 	@Test
