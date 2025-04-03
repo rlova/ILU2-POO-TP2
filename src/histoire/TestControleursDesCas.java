@@ -73,11 +73,11 @@ public class TestControleursDesCas {
 		ControlPrendreEtal controlPrendreEtal = new ControlPrendreEtal(
 				controlVerifierIdentite, village);
 		int numeroEtal = controlPrendreEtal.prendreEtal("Obelix", "fleur", 5);
-		System.out.println("Obelix a pris l'etal n°" + (numeroEtal+1));
+		System.out.println("Obelix a pris l'etal n" + (numeroEtal+1));
 
 //		Sortie Console :
 //		Cas 4 : Prendre etal
-//		Obelix a pris l'etal n°1
+//		Obelix a pris l'etal nï¿½1
 
 
 		// Cas 5 : trouverEtalVendeur
@@ -112,7 +112,7 @@ public class TestControleursDesCas {
 
 		// Cas 6 : libererEtal
 
-//		System.out.println("///////////////////////////////");
+		System.out.println("///////////////////////////////");
 		System.out.println("Cas 6 : Liberer etal");
 		ControlLibererEtal controlLibererEtal = new ControlLibererEtal(
 				controlTrouverEtalVendeur);
@@ -148,16 +148,16 @@ public class TestControleursDesCas {
 
 		// Cas 7 : Afficher marche
 
-//		System.out.println("///////////////////////////////");
-//		System.out.println("Cas 7 : Afficher Marche");
-//		ControlAfficherMarche controlAfficherMarche = new ControlAfficherMarche(
-//				village);
-//		controlPrendreEtal.prendreEtal("Obelix", "menhirs", 3);
-//		controlPrendreEtal.prendreEtal("Asterix", "poissons", 10);
-//		String[] marche = controlAfficherMarche.donnerInfosMarche();
-//		for (String etal : marche) {
-//			System.out.println(etal);
-//		}
+		System.out.println("///////////////////////////////");
+		System.out.println("Cas 7 : Afficher Marche");
+		ControlAfficherMarche controlAfficherMarche = new ControlAfficherMarche(
+				village);
+		controlPrendreEtal.prendreEtal("Obelix", "menhirs", 3);
+		controlPrendreEtal.prendreEtal("Asterix", "poissons", 10);
+		String[] marche = controlAfficherMarche.donnerInfosMarche();
+		for (String etal : marche) {
+			System.out.println(etal);
+		}
 		
 
 //		Sortie Console :

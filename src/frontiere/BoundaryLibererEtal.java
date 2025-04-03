@@ -12,12 +12,12 @@ public class BoundaryLibererEtal {
 	}
 
 	public void libererEtal(String nomVendeur) {
-//		boolean vendeurReconnu = 
-//		if (!vendeurReconnu) {
-//			System.out.println("Mais vous n'etes pas inscrit sur notre marche aujourd'hui !");
-//		} else {
-//			String[] donneesEtal = controlLibererEtal.libererEtal(nomVendeur);
-//		}
+		boolean vendeurReconnu = controlLibererEtal.isVendeur(nomVendeur);
+		if (!vendeurReconnu) {
+			System.out.println("Mais vous n'etes pas inscrit sur notre marche aujourd'hui !");
+		} else {
+			String[] donneesEtal = controlLibererEtal.libererEtal(nomVendeur);
+		}
 	}
 
 }
