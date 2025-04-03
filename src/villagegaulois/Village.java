@@ -194,7 +194,7 @@ public class Village {
 				if (etal.isEtalOccupe()) {
 					nbEtal++;
 				}
-			}
+			} 
 			return nbEtal;
 		}
 
