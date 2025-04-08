@@ -33,3 +33,4 @@ public class ControlAcheterProduit {
 		Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
 		return etal.acheterProduit(quantite);
 	}
+}
