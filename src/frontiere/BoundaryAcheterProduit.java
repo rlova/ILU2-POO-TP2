@@ -1,6 +1,7 @@
 package frontiere;
 
 import controleur.ControlAcheterProduit;
+import personnages.Gaulois;
 import villagegaulois.Etal;
 
 public class BoundaryAcheterProduit {
@@ -10,17 +11,23 @@ public class BoundaryAcheterProduit {
 		this.controlAcheterProduit = controlAcheterProduit;
 	}
 
-	public void acheterProduit(String nomAcheteur) {
-		if (controlAcheterProduit.verifierIdentite(nomAcheteur)==false) {
-			System.out.println("Je suis désolée "+nomAcheteur+" mais il faut être un habitant de notre village pour commercier ici.");
+	public acheterProduit(String nomAcheteur) {
+		if (!controlAcheterProduit.verifierIdentite(nomAcheteur)==false) {
+			System.out.println("Je suis dï¿½solï¿½e "+nomAcheteur+" mais il faut ï¿½tre un habitant de notre village pour commercier ici.");
+			return;
 		} else { 		
 			StringBuilder question = new StringBuilder();
 			question.append("Quel produit voulez-vous acheter ?");
 			String produit = Clavier.entrerChaine(question.toString());
+			Gaulois[] vendeurs = controlAcheterProduit.trouverVendeursProduit(produit);
+			if (vendeurs==null || vendeurs.length==0) {
+				System.out.println("DÃ©somÃ©, personne ne vend ce produit au marche.");
+				return;
+			}
 			question = new StringBuilder();
-			question.append("Chez quel commerçant voulez-vous acheter des "+produit+" ?");
+			question.append("Chez quel commerï¿½ant voulez-vous acheter des "+produit+" ?");
 			String nomVendeur = Clavier.entrerChaine(question.toString());
-			System.out.println(nomAcheteur+" se déplace jusqu'à l'étal du vendeur "+nomVendeur);
+			System.out.println(nomAcheteur+" se dï¿½place jusqu'ï¿½ l'ï¿½tal du vendeur "+nomVendeur);
 			trouverEtalVendeur(nomAcheteur, nomVendeur, produit);
 		}
 	}
@@ -28,14 +35,14 @@ public class BoundaryAcheterProduit {
 	public void trouverEtalVendeur(String nomAcheteur, String nomVendeur, String produit) {
 		Etal etal = controlAcheterProduit.trouverEtalVendeur(nomVendeur);
 		if (etal==null) {
-			System.out.println("Je suis désolé Bonemine mais il faut être un habitant de notre village pour commercer ici.");
+			System.out.println("Je suis dï¿½solï¿½ Bonemine mais il faut ï¿½tre un habitant de notre village pour commercer ici.");
 		} else {
 			System.out.println("Bonjour "+nomAcheteur);
 			StringBuilder question = new StringBuilder();
 			question.append("Combien de fleurs voulez-vous acheter ?");
 			int nbProduit = Clavier.entrerEntier(question.toString());
 			//if (nbProduit)
-			System.out.println(nomAcheteur+" achète "+nbProduit+" "+produit+" à "+nomVendeur);
+			System.out.println(nomAcheteur+" achï¿½te "+nbProduit+" "+produit+" ï¿½ "+nomVendeur);
 		}
 	}
 }

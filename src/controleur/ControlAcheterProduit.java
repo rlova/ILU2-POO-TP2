@@ -25,5 +25,11 @@ public class ControlAcheterProduit {
 		return controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
 	}
 	
-	//public Etal[] 
-}
+	public Gaulois[] trouverVendeursProduit(String produit) {
+		return village.rechercherVendeursProduit(produit);
+	}
+	
+	public int acheterProduit(String nomVendeur, int quantite) {
+		Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
+		return etal.acheterProduit(quantite);
+	}
