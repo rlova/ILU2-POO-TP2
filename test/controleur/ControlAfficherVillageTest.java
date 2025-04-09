@@ -27,9 +27,7 @@ class ControlAfficherVillageTest {
 		gaulois = new Gaulois("Le gaulois 1", 7);
 		druide = new Druide("druide", 5, 6, 12);
 		village.ajouterHabitant(gaulois);
-		village.trouverHabitant(gaulois.getNom());
-		village.donnerVillageois();
-		
+		village.ajouterHabitant(druide);
 	}
 
 	@Test
@@ -39,17 +37,19 @@ class ControlAfficherVillageTest {
 
 	@Test
 	void testDonnerNomsVillageois() {
-		fail("Not yet implemented");
+		String[] noms = controlAfficherVillage.donnerNomsVillageois();
+		assertNotNull(noms, "La liste des noms ne doit pas être null");
+		assertEquals(3, noms.length, "Il doit y avoir 3 villageois (le chef, le druide et le gaulois");
 	}
 
 	@Test
 	void testDonnerNomVillage() {
-		fail("Not yet implemented");
+		assertEquals("le village", controlAfficherVillage.donnerNomVillage());
 	}
 
 	@Test
 	void testDonnerNbEtals() {
-		fail("Not yet implemented");
+		assertEquals(2, controlAfficherVillage.donnerNbEtals());
 	}
 
 }
