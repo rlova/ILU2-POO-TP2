@@ -25,14 +25,12 @@ class ControlPrendreEtalTest {
 		controlVerifierIdentite = new ControlVerifierIdentite(village);
 		chef = new Chef("le chef", 5, village);
 		village.setChef(chef);
-		village.getNom();
 		gaulois = new Gaulois("Le gaulois 1", 7);
 		druide = new Druide("druide", 5, 6, 12);
 		village.ajouterHabitant(gaulois);
 		village.trouverHabitant(gaulois.getNom());
 		village.donnerVillageois();
 		controlPrendreEtal = new ControlPrendreEtal(controlVerifierIdentite, village);
-		
 	}
 	
 	@Test

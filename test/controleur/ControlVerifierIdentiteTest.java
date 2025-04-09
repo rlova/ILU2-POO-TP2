@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import personnages.Chef;
-import personnages.Druide;
 import personnages.Gaulois;
 import villagegaulois.Village;
 
