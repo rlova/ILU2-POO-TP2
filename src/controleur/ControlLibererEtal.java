@@ -32,11 +32,6 @@ public class ControlLibererEtal {
 		} else {
 			Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
 			donneesEtal = etal.etatEtal();
-//			donneesEtal[0] = etal.isEtalOccupe();
-//			donneesEtal[1] = nomVendeur;
-//			donneesEtal[2] = etal.getProduit();
-//			donneesEtal[3] = etal.getQuantite();
-//			donneesEtal[4] = etal.get;
 			if (donneesEtal[0]!="true") {
 				System.out.println("Vous avez vendu "+ donneesEtal[4] + " sur "+donneesEtal[3]+" "+donneesEtal[2]+".");
 				System.out.println("Au revoir "+nomVendeur+", passez une bonne journee");

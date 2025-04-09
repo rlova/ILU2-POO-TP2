@@ -37,13 +37,18 @@ class ControlTrouverEtalVendeurTest {
 
 	@Test
 	void testTrouverEtalVendeur() {
+		// test sur étal qui existe
 		Etal etalExistant = controlTrouverVendeur.trouverEtalVendeur(gaulois.getNom());
 		assertNotNull(etalExistant, "L'etal existe bien et ne doit pas être null");
 		assertEquals(gaulois,etalExistant.getVendeur(),"Le même vendeur");
+		
+		// test sur vendeur qui n'existe pas
 		Etal etalInexistant = controlTrouverVendeur.trouverEtalVendeur("miss");
 		assertNull(etalInexistant, "L'étal n'existe pas car pas de vendeur");
-		Etal vendeurSansEtal = controlTrouverVendeur.trouverEtalVendeur(druide.getNom());
-		assertNull(vendeurSansEtal, "L'étal n'existe pas donc il est null");
+		
+		// test sur un personnage sans étal
+		Etal sansEtal = controlTrouverVendeur.trouverEtalVendeur(druide.getNom());
+		assertNull(sansEtal, "L'étal n'existe pas donc il est null");
 	}
 
 }
