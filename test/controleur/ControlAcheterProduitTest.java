@@ -83,10 +83,20 @@ class ControlAcheterProduitTest {
 		int quantiteNulle = controlAcheterProduit.acheterProduit("bonemine", 0);
 		assertEquals(0,quantiteNulle);
 		
-		// test acheter un produit d'un étal vide
+		// test acheter un produit d'un étal devenu vide 
 		controlAcheterProduit.acheterProduit("obelix", 10);
 		int quantiteAcheteeEtalVide = controlAcheterProduit.acheterProduit("obelix", 5);
 		assertEquals(0,quantiteAcheteeEtalVide);
+		
+		// test acheter un produit d'un étal inexistant
+		int quantiteEtalInexistant = controlAcheterProduit.acheterProduit("panoramix", 3);
+		assertEquals(0,quantiteEtalInexistant);
+		
+		// test acheter un produit d'un vendeur sans étal
+		Gaulois vendeur = new Gaulois("vendeur", 4);
+		village.ajouterHabitant(vendeur);
+		int quantiteSansEtal = controlAcheterProduit.acheterProduit("vendeur", 7);
+		assertEquals(0, quantiteSansEtal);
 	}
 
 }
