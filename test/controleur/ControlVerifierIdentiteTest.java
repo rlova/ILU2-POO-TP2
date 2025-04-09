@@ -36,6 +36,7 @@ class ControlVerifierIdentiteTest {
 	void testVerifierIdentite() { 
 		assertTrue(controlVerifierIdentite.verifierIdentite(chef.getNom()));
 		assertFalse(controlVerifierIdentite.verifierIdentite(gaulois.getNom()));
+		assertFalse(controlVerifierIdentite.verifierIdentite(""));
 	}
 
 }

@@ -50,5 +50,4 @@ class ControlTrouverEtalVendeurTest {
 		Etal sansEtal = controlTrouverVendeur.trouverEtalVendeur(druide.getNom());
 		assertNull(sansEtal, "L'étal n'existe pas donc il est null");
 	}
-
 }
