@@ -25,7 +25,7 @@ class ControlLibererEtalTest {
 		controlLibererEtal = new ControlLibererEtal(controlTrouverEtalVendeur);
 		chef = new Chef("chef", 3, village);
 		village.setChef(chef);
-		gaulois = new Gaulois("Le gaulois 1", 7);
+		gaulois = new Gaulois("gaulois", 7);
 		druide = new Druide("druide", 5, 6, 12);
 		village.ajouterHabitant(gaulois);
 		village.installerVendeur(gaulois, "produit", 3);
@@ -40,16 +40,27 @@ class ControlLibererEtalTest {
 	void testIsVendeur() {
 		assertTrue(controlLibererEtal.isVendeur(gaulois.getNom()));
 		assertFalse(controlLibererEtal.isVendeur(druide.getNom()));
+		assertFalse(controlLibererEtal.isVendeur("miss"));
 	}
 
 	@Test
 	void testLibererEtal() {
+		// test sur un étal qui existe
 		String[] donnees = controlLibererEtal.libererEtal(gaulois.getNom());
-		assertNotNull(donnees, "Les données de l'étal n'est pas null");
+		assertNotNull(donnees, "Les données de l'étal ne sont pas nuls");
 		assertEquals(5,donnees.length,"Le tableau des données doit avoir 5 élements");
 		assertEquals("true",donnees[0]);
 		assertEquals(gaulois.getNom(),donnees[1]);
 		assertEquals("produit",donnees[2]);
 		assertEquals("3",donnees[3]);
+		assertFalse(controlLibererEtal.isVendeur(gaulois.getNom()));
+		
+		// test sur un vendeur qui n'existe pas
+		String[] donneesInexistants = controlLibererEtal.libererEtal("miss");
+		assertNull(donneesInexistants, "le vendeur n'existe pas donc les donnees sont nuls");
+		
+		// test sur un personnage sans étal
+		String[] donneesSansEtal = controlLibererEtal.libererEtal(druide.getNom());
+		assertNull(donneesSansEtal,"Le druide n'a pas d'étal donc les données sont nuls");
 	}
 }

@@ -12,7 +12,7 @@ public class ControlLibererEtal {
 
 	public boolean isVendeur(String nomVendeur) {
 		Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
-		return etal != null;
+		return etal != null && etal.isEtalOccupe();
 	}
 
 	/**
@@ -27,22 +27,12 @@ public class ControlLibererEtal {
 	 */
 	public String[] libererEtal(String nomVendeur) {
 		String[] donneesEtal = null;
-		if (!isVendeur(nomVendeur)) {
+		Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
+		if (etal==null || !etal.isEtalOccupe()) {
 			return donneesEtal;
-		} else {
-			Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
-			donneesEtal = etal.etatEtal();
-//			donneesEtal[0] = etal.isEtalOccupe();
-//			donneesEtal[1] = nomVendeur;
-//			donneesEtal[2] = etal.getProduit();
-//			donneesEtal[3] = etal.getQuantite();
-//			donneesEtal[4] = etal.get;
-			if (donneesEtal[0]!="true") {
-				System.out.println("Vous avez vendu "+ donneesEtal[4] + " sur "+donneesEtal[3]+" "+donneesEtal[2]+".");
-				System.out.println("Au revoir "+nomVendeur+", passez une bonne journee");
-			}
-			etal.libererEtal();
 		}
+		donneesEtal = etal.etatEtal();
+		etal.libererEtal();
 		return donneesEtal;
 	}
 
