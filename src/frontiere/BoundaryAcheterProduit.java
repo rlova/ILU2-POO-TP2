@@ -12,8 +12,8 @@ public class BoundaryAcheterProduit {
 	}
 
 	public void acheterProduit(String nomAcheteur) {
-		if (!controlAcheterProduit.verifierIdentite(nomAcheteur)==false) {
-			System.out.println("Je suis desolee "+nomAcheteur+" mais il faut �tre un habitant de notre village pour commercier ici.");
+		if (!controlAcheterProduit.verifierIdentite(nomAcheteur)) {
+			System.out.println("Je suis desolee "+nomAcheteur+" mais il faut etre un habitant de notre village pour commercier ici.");
 		} else { 		
 			StringBuilder question = new StringBuilder();
 			question.append("Quel produit voulez-vous acheter ?");
@@ -27,9 +27,10 @@ public class BoundaryAcheterProduit {
 			for (int i=0; i<vendeurs.length; i++) {
 				System.out.println((i+1)+" - "+vendeurs[i].getNom());
 			}
-			String nomVendeur = Clavier.entrerChaine(question.toString());
-			System.out.println(nomAcheteur+" se deplace jusqu'a l'etal du vendeur "+nomVendeur);
-			trouverEtalVendeur(nomAcheteur, nomVendeur, produit);
+			int numVendeur = Clavier.entrerEntier(question.toString());
+			Gaulois nomVendeur = vendeurs[numVendeur-1];
+			System.out.println(nomAcheteur+" se deplace jusqu'a l'etal du vendeur "+nomVendeur.getNom());
+			trouverEtalVendeur(nomAcheteur, nomVendeur.getNom(), produit);
 		}
 	}
 	

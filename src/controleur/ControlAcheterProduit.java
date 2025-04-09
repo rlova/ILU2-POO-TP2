@@ -31,6 +31,9 @@ public class ControlAcheterProduit {
 	
 	public int acheterProduit(String nomVendeur, int quantite) {
 		Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
+		if (etal==null || !etal.isEtalOccupe()) {
+			return 0;
+		}
 		return etal.acheterProduit(quantite);
 	}
 }
