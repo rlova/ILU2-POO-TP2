@@ -51,6 +51,7 @@ class ControlAcheterProduitTest {
 		Etal etal = controlAcheterProduit.trouverEtalVendeur("bonemine");
 		assertNotNull(etal,"L'étal de Bonemine existe");
 		assertEquals("bonemine", etal.getVendeur().getNom());
+		// étal non occupé
 		assertNull(controlAcheterProduit.trouverEtalVendeur("miss"));
 	}
 
@@ -72,10 +73,15 @@ class ControlAcheterProduitTest {
 		// cas de stock normal
 		int quantiteAchetee = controlAcheterProduit.acheterProduit("bonemine", 2);
 		assertEquals(2,quantiteAchetee);
-		
 		// cas de stock insuffisant
-		quantiteAchetee = controlAcheterProduit.acheterProduit("bonemine", 20);
-		assertEquals(13,quantiteAchetee); // quantiteAchetee>quantiteDispo => quantiteAchetee=quantiteDispo
+		int quantiteInsuffisant = controlAcheterProduit.acheterProduit("bonemine", 20);
+		assertEquals(13,quantiteInsuffisant); // quantiteInsuffisant>quantiteDispo => quantiteInsuffisant=quantiteDispo
+		// cas où la quantité est négative
+		int quantiteNegative = controlAcheterProduit.acheterProduit("bonemine", -1);
+		assertEquals(0, quantiteNegative);
+		// cas où on la quantité est nulle
+		int quantiteNulle = controlAcheterProduit.acheterProduit("bonemine", 0);
+		assertEquals(0,quantiteNulle);
 		
 		// test acheter un produit d'un étal vide
 		controlAcheterProduit.acheterProduit("obelix", 10);
