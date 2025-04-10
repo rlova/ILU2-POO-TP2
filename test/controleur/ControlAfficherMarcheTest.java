@@ -57,6 +57,30 @@ class ControlAfficherMarcheTest {
 		assertEquals("bonemine",infosEtalVide[0]);
 		assertEquals("0", infosEtalVide[1]);
 		assertNull(infosEtalVide[2]);
+		
+		// test sur plusieurs vendeurs
+		Village villagevendeursMax = new Village("village max vendeurs", 400,300);
+		ControlAfficherMarche controlMaxVendeurs = new ControlAfficherMarche(villagevendeursMax);
+		for (int i=0; i<100; i++) {
+			Gaulois v = new Gaulois("vendeur"+i,1);
+			villagevendeursMax.ajouterHabitant(v);
+			villagevendeursMax.installerVendeur(v, "produit"+i, i);
+		}
+		String[] infosPlusieursVendeurs = controlMaxVendeurs.donnerInfosMarche();
+		assertEquals(300,infosPlusieursVendeurs.length);
+		
+		// test sur quantité négative
+		Village villageQtNegative = new Village("village quantité négative", 2, 3);
+		ControlAfficherMarche controlQtNegative = new ControlAfficherMarche(villageQtNegative);
+		villageQtNegative.installerVendeur(bonemine, "mangues", -1);
+		String[] infosQtNegative = controlQtNegative.donnerInfosMarche();
+		assertEquals("-1",infosQtNegative[1]);
+		
+		// test sur produit avec espace
+		Village villagePtEspace = new Village("village produit avec espace", 2, 3);
+		ControlAfficherMarche controlPtEspace = new ControlAfficherMarche(villagePtEspace);
+		villageQtNegative.installerVendeur(bonemine, "  ananas   ", 4);
+		String[] infosPtEspace = controlPtEspace.donnerInfosMarche();
+		assertEquals(0,infosPtEspace.length);
 	}
-
 }
