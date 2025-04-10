@@ -62,5 +62,16 @@ class ControlLibererEtalTest {
 		// test sur un personnage sans étal
 		String[] donneesSansEtal = controlLibererEtal.libererEtal(druide.getNom());
 		assertNull(donneesSansEtal,"Le druide n'a pas d'étal donc les données sont nuls");
+		
+		String[] donneesVide = controlLibererEtal.libererEtal("");
+		assertNull(donneesVide);
+		
+		// test faire partir un vendeur
+		Gaulois asterix = new Gaulois("asterix", 6);
+		village.ajouterHabitant(asterix);
+		village.installerVendeur(asterix, "fruits", 3);
+		assertTrue(controlLibererEtal.isVendeur(asterix.getNom()));
+		village.partirVendeur(asterix);
+		assertFalse(controlLibererEtal.isVendeur(asterix.getNom()), "le vendeur est bien parti");
 	}
 }

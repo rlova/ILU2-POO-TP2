@@ -44,6 +44,7 @@ class ControlAcheterProduitTest {
 	void testVerifierIdentite() {
 		assertTrue(controlAcheterProduit.verifierIdentite(bonemine.getNom()));
 		assertFalse(controlAcheterProduit.verifierIdentite("miss"));
+		assertFalse(controlAcheterProduit.verifierIdentite("BONEMINE"));
 	}
 
 	@Test
@@ -65,6 +66,16 @@ class ControlAcheterProduitTest {
 		// test sur des produits où il n'y a pas de vendeurs
 		Gaulois[] vendeursPommes = controlAcheterProduit.trouverVendeursProduit("pommes");
 		assertNull(vendeursPommes);
+		
+		// test sur des produits avec plusiseurs vendeurs
+		Gaulois crabe1 = new Gaulois("vendeuse",3);
+		Gaulois crabe2 = new Gaulois("vendeur",5);
+		village.installerVendeur(crabe1, "crabes", 8);
+		village.installerVendeur(crabe2, "crabes", 4);
+		Gaulois[] vendeursCrabes = controlAcheterProduit.trouverVendeursProduit("crabes");
+		assertEquals(2,vendeursCrabes.length);
+		assertTrue(vendeursCrabes[0].getNom().equals("vendeuse"));
+		assertTrue(vendeursCrabes[1].getNom().equals("vendeur"));
 	}
 
 	@Test
