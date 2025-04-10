@@ -45,6 +45,7 @@ class ControlAcheterProduitTest {
 		assertTrue(controlAcheterProduit.verifierIdentite(bonemine.getNom()));
 		assertFalse(controlAcheterProduit.verifierIdentite("miss"));
 		assertFalse(controlAcheterProduit.verifierIdentite("BONEMINE"));
+		assertFalse(controlAcheterProduit.verifierIdentite(""));
 	}
 
 	@Test
@@ -54,10 +55,13 @@ class ControlAcheterProduitTest {
 		assertEquals("bonemine", etal.getVendeur().getNom());
 		// étal non occupé
 		assertNull(controlAcheterProduit.trouverEtalVendeur("miss"));
+		assertNull(controlAcheterProduit.trouverEtalVendeur(""));
 	}
 
 	@Test
 	void testTrouverVendeursProduit() {
+		assertNull(controlAcheterProduit.trouverVendeursProduit(""));
+		
 		// test sur des produits où il y a des vendeurs
 		Gaulois[] vendeursFleurs = controlAcheterProduit.trouverVendeursProduit("fleurs");
 		assertEquals(1,vendeursFleurs.length);

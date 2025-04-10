@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import personnages.Chef;
 import personnages.Druide;
 import personnages.Gaulois;
+import villagegaulois.Etal;
 import villagegaulois.Village;
 
 class ControlLibererEtalTest {
@@ -41,12 +42,17 @@ class ControlLibererEtalTest {
 		assertTrue(controlLibererEtal.isVendeur(gaulois.getNom()));
 		assertFalse(controlLibererEtal.isVendeur(druide.getNom()));
 		assertFalse(controlLibererEtal.isVendeur("miss"));
+		assertFalse(controlLibererEtal.isVendeur(""));
+		assertFalse(controlLibererEtal.isVendeur("  "));
 	}
 
 	@Test
 	void testLibererEtal() {
 		// test sur un étal qui existe
 		String[] donnees = controlLibererEtal.libererEtal(gaulois.getNom());
+		Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(gaulois.getNom());
+		assertNotNull(etal);
+		assertFalse(etal.isEtalOccupe());
 		assertNotNull(donnees, "Les données de l'étal ne sont pas nuls");
 		assertEquals(5,donnees.length,"Le tableau des données doit avoir 5 élements");
 		assertEquals("true",donnees[0]);
@@ -63,8 +69,11 @@ class ControlLibererEtalTest {
 		String[] donneesSansEtal = controlLibererEtal.libererEtal(druide.getNom());
 		assertNull(donneesSansEtal,"Le druide n'a pas d'étal donc les données sont nuls");
 		
+		// test sur données incorrects
 		String[] donneesVide = controlLibererEtal.libererEtal("");
 		assertNull(donneesVide);
+		String[] donneesAvecEsp = controlLibererEtal.libererEtal("  ");
+		assertNull(donneesAvecEsp);
 		
 		// test faire partir un vendeur
 		Gaulois asterix = new Gaulois("asterix", 6);
@@ -73,5 +82,9 @@ class ControlLibererEtalTest {
 		assertTrue(controlLibererEtal.isVendeur(asterix.getNom()));
 		village.partirVendeur(asterix);
 		assertFalse(controlLibererEtal.isVendeur(asterix.getNom()), "le vendeur est bien parti");
+		
+		// libérer un étal déjà libéré
+		String[] etalDejaLibere = controlLibererEtal.libererEtal(gaulois.getNom());
+		assertNull(etalDejaLibere);
 	}
 }
